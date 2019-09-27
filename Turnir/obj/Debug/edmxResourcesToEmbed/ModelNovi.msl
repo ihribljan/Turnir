@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TurnirModel1StoreContainer" CdmEntityContainer="TurnirEntities">
+    <EntitySetMapping Name="Ekipe">
+      <EntityTypeMapping TypeName="TurnirModel1.Ekipe">
+        <MappingFragment StoreEntitySet="Ekipe">
+          <ScalarProperty Name="Bodovi" ColumnName="Bodovi" />
+          <ScalarProperty Name="GolRazlika" ColumnName="GolRazlika" />
+          <ScalarProperty Name="PrimljeniGolovi" ColumnName="PrimljeniGolovi" />
+          <ScalarProperty Name="PostignutiGolovi" ColumnName="PostignutiGolovi" />
+          <ScalarProperty Name="Porazi" ColumnName="Porazi" />
+          <ScalarProperty Name="Neriješeno" ColumnName="Neriješeno" />
+          <ScalarProperty Name="Pobjede" ColumnName="Pobjede" />
+          <ScalarProperty Name="OdigraneUtakmice" ColumnName="OdigraneUtakmice" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="GrupeId" ColumnName="GrupeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grupe">
+      <EntityTypeMapping TypeName="TurnirModel1.Grupe">
+        <MappingFragment StoreEntitySet="Grupe">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Igraci">
+      <EntityTypeMapping TypeName="TurnirModel1.Igraci">
+        <MappingFragment StoreEntitySet="Igraci">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="EkipeId" ColumnName="EkipeId" />
+          <ScalarProperty Name="BrojGolova" ColumnName="BrojGolova" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rasporedi">
+      <EntityTypeMapping TypeName="TurnirModel1.Rasporedi">
+        <MappingFragment StoreEntitySet="Rasporedi">
+          <ScalarProperty Name="GrupeId" ColumnName="GrupeId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EkipeIdDomacin" ColumnName="EkipeIdDomacin" />
+          <ScalarProperty Name="EkipeIdGost" ColumnName="EkipeIdGost" />
+          <ScalarProperty Name="Vrijeme" ColumnName="Vrijeme" />
+          <ScalarProperty Name="GoloviDomacin" ColumnName="GoloviDomacin" />
+          <ScalarProperty Name="GoloviGost" ColumnName="GoloviGost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rezultati">
+      <EntityTypeMapping TypeName="TurnirModel1.Rezultati">
+        <MappingFragment StoreEntitySet="Rezultati">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RasporediId" ColumnName="RasporediId" />
+          <ScalarProperty Name="GoloviDomacin" ColumnName="GoloviDomacin" />
+          <ScalarProperty Name="GoloviGost" ColumnName="GoloviGost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Strijelci">
+      <EntityTypeMapping TypeName="TurnirModel1.Strijelci">
+        <MappingFragment StoreEntitySet="Strijelci">
+          <ScalarProperty Name="BrojGolova" ColumnName="BrojGolova" />
+          <ScalarProperty Name="EkipeId" ColumnName="EkipeId" />
+          <ScalarProperty Name="IgraciId" ColumnName="IgraciId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

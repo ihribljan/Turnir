@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TurnirModelStoreContainer" CdmEntityContainer="TurnirEnt">
+    <EntitySetMapping Name="Ekipe">
+      <EntityTypeMapping TypeName="TurnirModel.Ekipe">
+        <MappingFragment StoreEntitySet="Ekipe">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="GrupeId" ColumnName="GrupeId" />
+          <ScalarProperty Name="OdigraneUtakmice" ColumnName="OdigraneUtakmice" />
+          <ScalarProperty Name="Pobjede" ColumnName="Pobjede" />
+          <ScalarProperty Name="Neriješeno" ColumnName="Neriješeno" />
+          <ScalarProperty Name="Porazi" ColumnName="Porazi" />
+          <ScalarProperty Name="PostignutiGolovi" ColumnName="PostignutiGolovi" />
+          <ScalarProperty Name="PrimljeniGolovi" ColumnName="PrimljeniGolovi" />
+          <ScalarProperty Name="GolRazlika" ColumnName="GolRazlika" />
+          <ScalarProperty Name="Bodovi" ColumnName="Bodovi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Grupe">
+      <EntityTypeMapping TypeName="TurnirModel.Grupe">
+        <MappingFragment StoreEntitySet="Grupe">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Igraci">
+      <EntityTypeMapping TypeName="TurnirModel.Igraci">
+        <MappingFragment StoreEntitySet="Igraci">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="EkipeId" ColumnName="EkipeId" />
+          <ScalarProperty Name="BrojGolovaGrupa" ColumnName="BrojGolovaGrupa" />
+          <ScalarProperty Name="BrojGolovaKnockout" ColumnName="BrojGolovaKnockout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rasporedi">
+      <EntityTypeMapping TypeName="TurnirModel.Rasporedi">
+        <MappingFragment StoreEntitySet="Rasporedi">
+          <ScalarProperty Name="ažurirano" ColumnName="ažurirano" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="EkipeIdDomacin" ColumnName="EkipeIdDomacin" />
+          <ScalarProperty Name="EkipeIdGost" ColumnName="EkipeIdGost" />
+          <ScalarProperty Name="Vrijeme" ColumnName="Vrijeme" />
+          <ScalarProperty Name="GoloviDomacin" ColumnName="GoloviDomacin" />
+          <ScalarProperty Name="GoloviGost" ColumnName="GoloviGost" />
+          <ScalarProperty Name="GrupeId" ColumnName="GrupeId" />
+          <ScalarProperty Name="Odigrano" ColumnName="Odigrano" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rezultati">
+      <EntityTypeMapping TypeName="TurnirModel.Rezultati">
+        <MappingFragment StoreEntitySet="Rezultati">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RasporediId" ColumnName="RasporediId" />
+          <ScalarProperty Name="GoloviDomacin" ColumnName="GoloviDomacin" />
+          <ScalarProperty Name="GoloviGost" ColumnName="GoloviGost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Strijelci">
+      <EntityTypeMapping TypeName="TurnirModel.Strijelci">
+        <MappingFragment StoreEntitySet="Strijelci">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IgraciId" ColumnName="IgraciId" />
+          <ScalarProperty Name="EkipeId" ColumnName="EkipeId" />
+          <ScalarProperty Name="BrojGolova" ColumnName="BrojGolova" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

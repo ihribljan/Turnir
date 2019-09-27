@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TurnirModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Ekipe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naziv" Type="varchar" MaxLength="30" />
+    <Property Name="GrupeId" Type="int" />
+    <Property Name="OdigraneUtakmice" Type="int" />
+    <Property Name="Pobjede" Type="int" />
+    <Property Name="Neriješeno" Type="int" />
+    <Property Name="Porazi" Type="int" />
+    <Property Name="PostignutiGolovi" Type="int" />
+    <Property Name="PrimljeniGolovi" Type="int" />
+    <Property Name="GolRazlika" Type="int" />
+    <Property Name="Bodovi" Type="int" />
+  </EntityType>
+  <EntityType Name="Grupe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naziv" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Igraci">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ime" Type="varchar" MaxLength="20" />
+    <Property Name="Prezime" Type="varchar" MaxLength="20" />
+    <Property Name="EkipeId" Type="int" />
+    <Property Name="BrojGolovaGrupa" Type="int" />
+    <Property Name="BrojGolovaKnockout" Type="int" />
+  </EntityType>
+  <EntityType Name="Rasporedi">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EkipeIdDomacin" Type="int" />
+    <Property Name="EkipeIdGost" Type="int" />
+    <Property Name="Vrijeme" Type="varchar" MaxLength="10" />
+    <Property Name="GoloviDomacin" Type="int" />
+    <Property Name="GoloviGost" Type="int" />
+    <Property Name="GrupeId" Type="int" />
+    <Property Name="Odigrano" Type="varchar" MaxLength="5" />
+  </EntityType>
+  <EntityType Name="Rezultati">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RasporediId" Type="int" />
+    <Property Name="GoloviDomacin" Type="int" />
+    <Property Name="GoloviGost" Type="int" />
+  </EntityType>
+  <EntityType Name="Strijelci">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IgraciId" Type="int" Nullable="false" />
+    <Property Name="EkipeId" Type="int" Nullable="false" />
+    <Property Name="BrojGolova" Type="int" />
+  </EntityType>
+  <Association Name="FK__Ekipe__GrupeId__02FC7413">
+    <End Role="Grupe" Type="Self.Grupe" Multiplicity="0..1" />
+    <End Role="Ekipe" Type="Self.Ekipe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ekipe">
+        <PropertyRef Name="GrupeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Igraci__EkipeId__398D8EEE">
+    <End Role="Ekipe" Type="Self.Ekipe" Multiplicity="0..1" />
+    <End Role="Igraci" Type="Self.Igraci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ekipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Igraci">
+        <PropertyRef Name="EkipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rasporedi__Ekipe__3E52440B">
+    <End Role="Ekipe" Type="Self.Ekipe" Multiplicity="0..1" />
+    <End Role="Rasporedi" Type="Self.Rasporedi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ekipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rasporedi">
+        <PropertyRef Name="EkipeIdDomacin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rasporedi__Ekipe__3F466844">
+    <End Role="Ekipe" Type="Self.Ekipe" Multiplicity="0..1" />
+    <End Role="Rasporedi" Type="Self.Rasporedi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ekipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rasporedi">
+        <PropertyRef Name="EkipeIdGost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rasporedi__Grupe__3B40CD36">
+    <End Role="Grupe" Type="Self.Grupe" Multiplicity="0..1" />
+    <End Role="Rasporedi" Type="Self.Rasporedi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grupe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rasporedi">
+        <PropertyRef Name="GrupeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Rezultati__Raspo__4222D4EF">
+    <End Role="Rasporedi" Type="Self.Rasporedi" Multiplicity="0..1" />
+    <End Role="Rezultati" Type="Self.Rezultati" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rasporedi">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Rezultati">
+        <PropertyRef Name="RasporediId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Strijelci__Ekipe__2A164134">
+    <End Role="Ekipe" Type="Self.Ekipe" Multiplicity="1" />
+    <End Role="Strijelci" Type="Self.Strijelci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ekipe">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Strijelci">
+        <PropertyRef Name="EkipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Strijelci__Igrac__29221CFB">
+    <End Role="Igraci" Type="Self.Igraci" Multiplicity="1" />
+    <End Role="Strijelci" Type="Self.Strijelci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Igraci">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Strijelci">
+        <PropertyRef Name="IgraciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TurnirModelStoreContainer">
+    <EntitySet Name="Ekipe" EntityType="Self.Ekipe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grupe" EntityType="Self.Grupe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Igraci" EntityType="Self.Igraci" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rasporedi" EntityType="Self.Rasporedi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rezultati" EntityType="Self.Rezultati" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Strijelci" EntityType="Self.Strijelci" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Ekipe__GrupeId__02FC7413" Association="Self.FK__Ekipe__GrupeId__02FC7413">
+      <End Role="Grupe" EntitySet="Grupe" />
+      <End Role="Ekipe" EntitySet="Ekipe" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Igraci__EkipeId__398D8EEE" Association="Self.FK__Igraci__EkipeId__398D8EEE">
+      <End Role="Ekipe" EntitySet="Ekipe" />
+      <End Role="Igraci" EntitySet="Igraci" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rasporedi__Ekipe__3E52440B" Association="Self.FK__Rasporedi__Ekipe__3E52440B">
+      <End Role="Ekipe" EntitySet="Ekipe" />
+      <End Role="Rasporedi" EntitySet="Rasporedi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rasporedi__Ekipe__3F466844" Association="Self.FK__Rasporedi__Ekipe__3F466844">
+      <End Role="Ekipe" EntitySet="Ekipe" />
+      <End Role="Rasporedi" EntitySet="Rasporedi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rasporedi__Grupe__3B40CD36" Association="Self.FK__Rasporedi__Grupe__3B40CD36">
+      <End Role="Grupe" EntitySet="Grupe" />
+      <End Role="Rasporedi" EntitySet="Rasporedi" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Rezultati__Raspo__4222D4EF" Association="Self.FK__Rezultati__Raspo__4222D4EF">
+      <End Role="Rasporedi" EntitySet="Rasporedi" />
+      <End Role="Rezultati" EntitySet="Rezultati" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Strijelci__Ekipe__2A164134" Association="Self.FK__Strijelci__Ekipe__2A164134">
+      <End Role="Ekipe" EntitySet="Ekipe" />
+      <End Role="Strijelci" EntitySet="Strijelci" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Strijelci__Igrac__29221CFB" Association="Self.FK__Strijelci__Igrac__29221CFB">
+      <End Role="Igraci" EntitySet="Igraci" />
+      <End Role="Strijelci" EntitySet="Strijelci" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
